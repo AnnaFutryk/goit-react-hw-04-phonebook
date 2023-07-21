@@ -16,15 +16,13 @@ const initialContacts = [
 export const App = () => {
   // початкове значення приходить зі сховища, а якщо його нема, то initialContacts
   const [contacts, setContacts] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem('contacts')) ?? initialContacts
-    );
+    return JSON.parse(localStorage.getItem('contacts')) ?? initialContacts;
   });
   const [filter, setFilter] = useState('');
 
   //відображення контактів з localStorage
   useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   // додавання нового контакту в список контактів
